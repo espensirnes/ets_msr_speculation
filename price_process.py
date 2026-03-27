@@ -47,6 +47,9 @@ def plot_bank(e_bar, alpha, S, theta, eta, r):
 	b = banking(t, B0, PHI, ALPHA, S, e_bar, theta, eta, R, DeltaT)		
 	banking_end = solve_b_zero_times(PHI, B0, theta, R, eta, DeltaT, e_bar, ALPHA, S)
 
+	if banking_end is None:
+		banking_end = T_max_float-DeltaT
+
 	plot(t, p, b, e, alpha*S, pT, root=banking_end)
 	a=0
 	
